@@ -19,14 +19,16 @@ type LineList struct {
 }
 
 type List interface {
-	IsEmpty() bool
-	IsFull() bool
-	IndexOver() bool
-	ClearList()
-	GetElem(i int) (interface{}, error)
-	LocateElem(value interface{}) (int, error)
-	ListInsert(i int, v interface{}) error
-	ListDelete(i int) error
+	IsEmpty() bool                             //判断是否为空
+	IsFull() bool                              //判断是否已满
+	IndexOver() bool                           //判断索引是否超出限制
+	ClearList()                                //清空链表
+	GetElem(i int) (interface{}, error)        //获取索引为i的数据
+	LocateElem(value interface{}) (int, error) //获取值为value的索引值
+	ListInsert(i int, v interface{}) error     //在索引i出插入值v
+	ListDelete(i int) (interface{}, error)     //删除索引为i的元素,并返回值v
+	Append(v interface{}) error                //在尾部加入数据
+	Pop() (interface{}, error)                 //删除最后一个节点,并且返回节点数值
 }
 
 // Init a Sequenatial List
@@ -133,18 +135,18 @@ func (l *LineList) ListInsert(index int, v interface{}) error {
 }
 
 // Delete the Element with index index
-func (l *LineList) ListDelete(index int) error {
+func (l *LineList) ListDelete(index int) (interface{}, error) {
 	if l.IsEmpty() {
-		return ErrEmpty
+		return nil, ErrEmpty
 	}
 	if l.IndexOver(index) {
-		return ErrUnvalideLen
+		return nil, ErrUnvalideLen
 	}
-
+	value := l.Content[index]
 	for i := index - 1; i < l.Length-1; i++ {
 		l.Content[i] = l.Content[i+1]
 	}
 	l.Content = l.Content[:l.Length-1]
 	l.Length--
-	return nil
+	return value, nil
 }

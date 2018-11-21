@@ -6,7 +6,6 @@ import (
 )
 
 func TestInsert(t *testing.T) {
-
 	tests := []struct {
 		name string
 		args int
@@ -49,7 +48,7 @@ func TestDelete(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			list := InitListTest()
-			err := list.ListDelete(tt.args)
+			_, err := list.ListDelete(tt.args)
 			if err != nil {
 				fmt.Println("err:", err)
 			}
