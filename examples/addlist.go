@@ -1,4 +1,4 @@
-package main
+package examples
 
 import (
 	"container/list"
@@ -10,29 +10,6 @@ import (
 // 输入:(2->4->3) + (5->6->4)
 // 输出:7->0->8
 // 原因:342+465 = 807
-func main() {
-	l1 := list.New()
-	l2 := list.New()
-
-	l1.PushBack(2)
-	l1.PushBack(4)
-	l1.PushBack(3)
-
-	fmt.Println("l1 =====")
-	printList(l1)
-
-	l2.PushBack(5)
-	l2.PushBack(6)
-	l2.PushBack(4)
-	fmt.Println("l2 =====")
-	printList(l2)
-
-	lnew := AddLists(l1, l2)
-
-	fmt.Println("lnew =====")
-	printList(lnew)
-
-}
 
 func AddLists(l1, l2 *list.List) *list.List {
 	l := list.New()
