@@ -17,6 +17,11 @@
 
 ![Alt text](img/queue.png)
 
+> 刷题必备网站推荐:
+[leetcode](https://leetcode.com/explore/)
+[leetcode中文版](https://leetcode-cn.com/explore/)
+北大ACM, 网上找相关资料
+
 ## 一. 数据结构源码
 
 ### 1. 顺序结构线性链表
