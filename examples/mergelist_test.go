@@ -2,10 +2,9 @@ package examples
 
 import (
 	"fmt"
-	"testing"
 )
 
-func TestMergelist(t *testing.T) {
+func ExampleMergeKLists() {
 	var l1, l2, l3 List
 	l1.Init()
 	l2.Init()
@@ -30,8 +29,13 @@ func TestMergelist(t *testing.T) {
 	lists = append(lists, l1.head)
 	lists = append(lists, l2.head)
 	lists = append(lists, l3.head)
-	newnode := mergeKLists(lists)
+	newnode := MergeKLists(lists)
 	printlistnode(newnode)
+	//output:
+	//1 - > 4 - > 5
+	//2 - > 3 - > 8
+	//1 - > 6 - > 9
+	//1 - > 1 - > 2 - > 3 - > 4 - > 5 - > 6 - > 8 - > 9
 }
 
 func (l *List) printl() {
